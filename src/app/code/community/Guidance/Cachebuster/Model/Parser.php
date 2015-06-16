@@ -107,12 +107,13 @@ class Guidance_Cachebuster_Model_Parser
      */
     protected function _sanitizeUrl($url)
     {
-        $url    = parse_url($url);
-        $scheme = isset($url['scheme']) ? $url['scheme'] . '://' : '';
-        $host   = isset($url['host']) ? $url['host'] : '';
-        $port   = isset($url['port']) ? ':' . $url['port'] : '';
-        $path   = isset($url['path']) ? $url['path'] : '';
-        return "$scheme$host$port$path";
+        $url      = parse_url($url);
+        $scheme   = isset($url['scheme']) ? $url['scheme'] . '://' : '';
+        $host     = isset($url['host']) ? $url['host'] : '';
+        $port     = isset($url['port']) ? ':' . $url['port'] : '';
+        $path     = isset($url['path']) ? $url['path'] : '';
+        $fragment = isset($url['fragment']) ? '#' . $url['fragment'] : '';
+        return "$scheme$host$port$path$fragment";
     }
 
     /**
